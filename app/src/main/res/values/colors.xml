@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="shedule_back">#FFC160</color>
+    <color name="settings_btn_back">#7A756A</color>
+    <color name="note_back">#C1A9D2</color>
+    <color name="btn_note_back">#9779AA</color>
+    <color name="note_darkest">#787878</color>
+    <color name="notes_note_stroke">#C6B4D2</color>
+    <color name="notes_note_content_back">#80A26BCC</color>
+    <color name="breaks_fragment_background">#FFCD5C</color>
+    <color name="breaks_list_background">#EDAB15</color>
+</resources>

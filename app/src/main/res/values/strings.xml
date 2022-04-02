@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Shedule</string>
+    <string name="text_name">Введите имя...</string>
+    <string name="next">Продолжить</string>
+    <string name="skip">Пропустить</string>
+    <string name="change_name">Изменить имя</string>
+    <string name="change_language">Изменить язык</string>
+    <string name="feedback">Связь с разработчиком</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="note_number_one">Заметка номер один...</string>
+    <string name="start_writing">Начните писать...</string>
+    <string name="standard_user_name">Пользователь</string>
+    <string name="standard_user_name_and_comma">Пользователь,</string>
+    <string name="incorrect_name">Поле может содержать только буквы, цифры и знак подчеркивания</string>
+    <string name="dayInput">Ввод</string>
+    <string name="breaks">Звонки</string>
+    <string name="schedule">Расписание</string>
+    <string name="notes">Заметки</string>
+    <string name="settings">Настройки</string>
+    <string name="hello">Привет!</string>
+    <string name="example_title">Example title</string>
+    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
+    <string name="name">Имя</string>
+    <string-array name="days_array">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
+</resources>

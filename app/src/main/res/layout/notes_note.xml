@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/notesNoteContainer"
+    android:animateLayoutChanges="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/notesNoteTitleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notes_note_title_background"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/notesNoteTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/salsa_regular"
+            android:padding="@dimen/notes_note_padding"
+            android:text="@string/example_title"
+            android:textColor="@color/menu_item_color"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end">
+
+            <ImageButton
+                android:id="@+id/deleteNoteBtn"
+                android:layout_width="20dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/notesNoteTitle"
+                app:layout_constraintEnd_toEndOf="@+id/notesNoteTitle"
+                app:layout_constraintTop_toTopOf="@+id/notesNoteTitle"
+                app:srcCompat="@drawable/notes_delete_note" />
+
+            <ImageButton
+                android:id="@+id/editNoteBtn"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/notesNoteTitle"
+                app:layout_constraintEnd_toStartOf="@+id/deleteNoteBtn"
+                app:layout_constraintTop_toTopOf="@+id/notesNoteTitle"
+                app:srcCompat="@drawable/notes_edit_note" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <TextView
+        android:id="@+id/notesNoteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notes_note_content_background"
+        android:fontFamily="@font/salsa_regular"
+        android:padding="@dimen/notes_note_padding"
+        android:text="@string/example_text"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesNoteTitle" />
+</androidx.appcompat.widget.LinearLayoutCompat>

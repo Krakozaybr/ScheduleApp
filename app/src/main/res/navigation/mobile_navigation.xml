@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_schedule">
+
+    <fragment
+        android:id="@+id/nav_schedule"
+        android:name="com.krak.schedule_app.ui.schedule.ScheduleFragment"
+        android:label="@string/schedule"
+        tools:layout="@layout/schedule_fragment" />
+
+    <fragment
+        android:id="@+id/nav_breaks"
+        android:name="com.krak.schedule_app.ui.breaks.BreaksFragment"
+        android:label="@string/breaks"
+        tools:layout="@layout/breaks_fragment" />
+
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.krak.schedule_app.ui.notes.NotesFragment"
+        android:label="@string/notes"
+        tools:layout="@layout/notes_fragment" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.krak.schedule_app.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/settings_fragment" />
+</navigation>

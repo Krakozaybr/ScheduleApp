@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/note_back">
+
+    <ImageView
+        android:id="@+id/noteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/new_note_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelNoteBtn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/btn_note_back"
+        android:fontFamily="@font/salsa_regular"
+        android:paddingHorizontal="8dp"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveNoteBtn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/btn_note_back"
+        android:fontFamily="@font/salsa_regular"
+        android:paddingHorizontal="8dp"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cancelNoteBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/titleNoteInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/caveat"
+                android:hint="@string/note_number_one"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColorHint="@color/note_darkest"
+                android:textSize="34sp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/note_darkest" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/textNoteInput"
+                android:layout_width="match_parent"
+                android:layout_height="436dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/caveat"
+                android:gravity="top"
+                android:hint="@string/start_writing"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/note_darkest"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
