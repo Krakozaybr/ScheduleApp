@@ -3,10 +3,12 @@ package com.krak.schedule_app.main_activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,12 +28,14 @@ import com.krak.schedule_app.start.StartActivity;
 import com.krak.schedule_app.utils.Saveable;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
 
     public static Saveable saveable;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private AtomicInteger threadsWorked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         initNav();
         addObservers();
         checkName();
+        threadsWorked = new AtomicInteger();
+        binding.getRoot().getViewTreeObserver().addOnPreDrawListener(() -> threadsWorked.get() == 3);
         loadData();
     }
 
@@ -96,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         for (ListHolder holder : holders){
             List list = (List)holder.getData().getValue();
             if (list == null || list.isEmpty()){
-                holder.loadData();
+                holder.loadData(threadsWorked);
             }
         }
     }

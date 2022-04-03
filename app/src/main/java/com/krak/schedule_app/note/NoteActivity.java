@@ -2,6 +2,7 @@ package com.krak.schedule_app.note;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,13 +37,10 @@ public class NoteActivity extends AppCompatActivity {
         binding.saveNoteBtn.setOnClickListener(view -> {
             String purpose = getIntent().getStringExtra(PURPOSE);
             if (purpose.equals(EDIT_NOTE)){
-                new Thread(() -> {
-                    App app = (App) getApplication();
-                    NoteDao dao = app.getDatabase().notesDao();
-                    dao.delete(Note.parse(getIntent().getStringExtra(NOTE_TO_EDIT)));
-                }).start();
+                save(Note.parse(getIntent().getStringExtra(NOTE_TO_EDIT)));
+            } else {
+                save(null);
             }
-            save();
             startActivity(new Intent(NoteActivity.this, MainActivity.class));
         });
     }
@@ -63,7 +61,7 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
-    private void save(){
+    private void save(Note deleted){
         Note note = new Note(
                 binding.titleNoteInput.getText().toString(),
                 binding.textNoteInput.getText().toString()
@@ -71,6 +69,9 @@ public class NoteActivity extends AppCompatActivity {
         new Thread(() -> {
             App app = (App) getApplication();
             NoteDao dao = app.getDatabase().notesDao();
+            if (deleted != null){
+                dao.delete(deleted);
+            }
             dao.insert(note);
         }).start();
     }

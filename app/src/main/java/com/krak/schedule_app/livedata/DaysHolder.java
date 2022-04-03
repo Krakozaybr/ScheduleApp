@@ -7,13 +7,15 @@ import com.krak.schedule_app.app.database.AppDatabase;
 import com.krak.schedule_app.app.database.ScheduleDao;
 import com.krak.schedule_app.entities.Day;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class DaysHolder extends ListHolder<Day>{
 
     public DaysHolder(Application application) {
         super(application);
     }
 
-    public void loadData(){
+    public void loadData(AtomicInteger threadsWorked){
         new Thread(){
             @Override
             public void run() {
@@ -22,6 +24,7 @@ public class DaysHolder extends ListHolder<Day>{
                 AppDatabase db = app.getDatabase();
                 ScheduleDao dao = db.scheduleDao();
                 data.postValue(dao.getDays());
+                threadsWorked.incrementAndGet();
             }
         }.start();
     }

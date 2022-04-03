@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class ListHolder<V> extends AndroidViewModel {
 
@@ -25,7 +26,7 @@ public abstract class ListHolder<V> extends AndroidViewModel {
         data.setValue(newData);
     }
 
-    public abstract void loadData();
+    public abstract void loadData(AtomicInteger threadsWorked);
 
     public abstract void uploadData();
 }

@@ -69,7 +69,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonHold
 
         public void save(){
             lesson.setText(input.getText().toString());
-            Log.e("LEsson", "SAVED");
         }
     }
 }

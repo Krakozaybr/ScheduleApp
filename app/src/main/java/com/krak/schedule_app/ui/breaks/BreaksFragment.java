@@ -17,6 +17,7 @@ import com.krak.schedule_app.entities.BreaksSchedule;
 import com.krak.schedule_app.livedata.BreaksHolder;
 import com.krak.schedule_app.main_activity.MainActivity;
 import com.krak.schedule_app.utils.Saveable;
+import com.krak.schedule_app.utils.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class BreaksFragment extends Fragment implements Saveable {
         addListeners();
         initBreaks();
         MainActivity.saveable = this;
+        binding.daysBreaks.addItemDecoration(new SpacesItemDecoration(80));
         return binding.getRoot();
     }
 

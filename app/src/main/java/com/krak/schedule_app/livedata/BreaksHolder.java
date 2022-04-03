@@ -11,6 +11,7 @@ import com.krak.schedule_app.entities.BreaksSchedule;
 import com.krak.schedule_app.entities.Note;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BreaksHolder extends ListHolder<BreaksSchedule> {
 
@@ -18,7 +19,7 @@ public class BreaksHolder extends ListHolder<BreaksSchedule> {
         super(application);
     }
 
-    public void loadData(){
+    public void loadData(AtomicInteger threadsWorked){
         new Thread(){
             @Override
             public void run() {
@@ -27,6 +28,7 @@ public class BreaksHolder extends ListHolder<BreaksSchedule> {
                 AppDatabase db = app.getDatabase();
                 BreaksDao dao = db.breaksDao();
                 data.postValue(dao.getBreaksSchedules());
+                threadsWorked.incrementAndGet();
             }
         }.start();
     }

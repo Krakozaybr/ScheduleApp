@@ -9,6 +9,7 @@ import com.krak.schedule_app.app.database.NoteDao;
 import com.krak.schedule_app.entities.Note;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NotesHolder extends ListHolder<Note>{
 
@@ -16,7 +17,7 @@ public class NotesHolder extends ListHolder<Note>{
         super(application);
     }
 
-    public void loadData(){
+    public void loadData(AtomicInteger threadsWorked){
         new Thread(){
             @Override
             public void run() {
@@ -25,6 +26,7 @@ public class NotesHolder extends ListHolder<Note>{
                 AppDatabase db = app.getDatabase();
                 NoteDao dao = db.notesDao();
                 data.postValue(dao.getAll());
+                threadsWorked.incrementAndGet();
             }
         }.start();
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.krak.schedule_app.R;
 import com.krak.schedule_app.databinding.SettingsFragmentBinding;
+import com.krak.schedule_app.dialogs.MessageDialog;
 import com.krak.schedule_app.dialogs.NameInputDialog;
 import com.krak.schedule_app.main_activity.MainActivity;
 
@@ -27,6 +28,10 @@ public class SettingsFragment extends Fragment {
     private void addEventListeners(){
         binding.changeNameBtn.setOnClickListener(view -> {
             new NameInputDialog(getResources().getString(R.string.change_name), getActivity())
+                    .show(getActivity().getSupportFragmentManager(), "custom");
+        });
+        binding.feedbackBtn.setOnClickListener(view -> {
+            new MessageDialog(getResources().getString(R.string.feedback), getString(R.string.credit))
                     .show(getActivity().getSupportFragmentManager(), "custom");
         });
     }

@@ -17,6 +17,8 @@ import java.util.Objects;
 public class Note {
     @PrimaryKey
     @NonNull
+    private String key;
+
     private String title;
     private String text;
 
@@ -25,6 +27,16 @@ public class Note {
     public Note(@NonNull String title, String text) {
         this.title = title;
         this.text = text;
+        this.key = String.format("{\"title\": \"%s\"; \"text\": \"%s\"}", title, text);
+    }
+
+    @NonNull
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(@NonNull String key) {
+        this.key = key;
     }
 
     public String toJSON(){
@@ -52,6 +64,7 @@ public class Note {
         try {
             result.title = json.getString("title");
             result.text = json.getString("text");
+            result.key = String.format("{\"title\": \"%s\"; \"text\": \"%s\"}", result.title, result.text);
         } catch (JSONException e){
             Log.e("JSON", "JSONException while parsing obj Note to json");
         }

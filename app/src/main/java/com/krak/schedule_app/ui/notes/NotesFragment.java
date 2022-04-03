@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.krak.schedule_app.R;
@@ -33,8 +35,13 @@ public class NotesFragment extends Fragment{
     }
 
     public void initNotes(){
-        NotesAdapter adapter = new NotesAdapter((MainActivity) getActivity(), getInitialData());
-        binding.notes.setAdapter(adapter);
+        LiveData<List<Note>> livedata = new ViewModelProvider(getActivity()).get(NotesHolder.class).getData();
+        livedata.observe(getActivity(), notes -> {
+            if (binding != null && binding.notes != null) {
+                NotesAdapter adapter = new NotesAdapter((MainActivity) getActivity(), notes);
+                binding.notes.setAdapter(adapter);
+            }
+        });
     }
 
     public List<Note> getInitialData(){

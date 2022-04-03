@@ -3,6 +3,7 @@
         <item name="buttonStyle">@style/NotCapsButton</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowSplashScreenBackground"></item>
     </style>
     <style name="NotCapsButton" parent="Widget.AppCompat.Button">
         <item name="android:textAllCaps">false</item>

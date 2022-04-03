@@ -19,9 +19,12 @@
     <string name="notes">Заметки</string>
     <string name="settings">Настройки</string>
     <string name="hello">Привет!</string>
-    <string name="example_title">Example title</string>
-    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
+    <string name="example_title" translatable="false">Example title</string>
+    <string name="example_text" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
     <string name="name">Имя</string>
+    <string name="credit">Разработка: Гриценко Ярослав\nДизайн: София Немцева\n\nyaroslaw.gritsencko@gmail.com\nnemtseva.sofa12@gmail.com</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="english" translatable="false">English</string>
     <string-array name="days_array">
         <item>Понедельник</item>
         <item>Вторник</item>
