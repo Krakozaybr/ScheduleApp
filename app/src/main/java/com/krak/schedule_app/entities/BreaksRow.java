@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Objects;
-
+// Сущность строки в таблице расписания звонков
 @Entity(tableName = "breaks_rows")
 public class BreaksRow {
     @ColumnInfo(name = "breaks_schedule_number")
@@ -29,6 +29,7 @@ public class BreaksRow {
         this.col1 = col1;
         this.col2 = col2;
         this.col3 = col3;
+        // Это PrimaryKey. Делается вручную, чтобы исключить дубликаты при многопоточном добавлении в бд
         this.position = breaksScheduleNumber + "_" + position;
     }
 

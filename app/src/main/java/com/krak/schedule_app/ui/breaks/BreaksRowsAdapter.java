@@ -45,6 +45,7 @@ public class BreaksRowsAdapter extends RecyclerView.Adapter<BreaksRowsAdapter.Ro
         holder.breaksRow = row;
     }
 
+    // Вызываем у всех холдеров сохранение
     public void save(){
         for (RowHolder holder : holders){
             holder.save();

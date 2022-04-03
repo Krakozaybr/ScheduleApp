@@ -34,6 +34,7 @@ public class NotesFragment extends Fragment{
         return binding.getRoot();
     }
 
+    // Грузим заметки
     public void initNotes(){
         LiveData<List<Note>> livedata = new ViewModelProvider(getActivity()).get(NotesHolder.class).getData();
         livedata.observe(getActivity(), notes -> {
@@ -44,11 +45,8 @@ public class NotesFragment extends Fragment{
         });
     }
 
-    public List<Note> getInitialData(){
-        return new ViewModelProvider(getActivity()).get(NotesHolder.class).getData().getValue();
-    }
-
     public void addListeners(){
+        // Нажал на плюсик
         binding.addNoteNotes.setOnClickListener(view -> {
             Intent intent = new Intent(getContext(), NoteActivity.class);
             intent.putExtra(NoteActivity.PURPOSE, NoteActivity.NEW_NOTE);

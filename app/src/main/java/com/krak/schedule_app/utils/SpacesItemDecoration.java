@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+// Расстояние между элементами RecyclerView
 public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
     private int space;
 

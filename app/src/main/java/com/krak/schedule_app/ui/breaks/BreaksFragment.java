@@ -36,6 +36,7 @@ public class BreaksFragment extends Fragment implements Saveable {
         return binding.getRoot();
     }
 
+    // Грузим расписания
     private void initBreaks(){
         MainActivity activity =(MainActivity)getActivity();
         BreaksHolder holder = new ViewModelProvider(activity).get(BreaksHolder.class);
@@ -47,6 +48,7 @@ public class BreaksFragment extends Fragment implements Saveable {
         });
     }
 
+    // Берем шаблон
     private BreaksSchedule getInitialData(){
         int number = binding.daysBreaks.getAdapter().getItemCount();
         ArrayList<BreaksRow> rows = new ArrayList<>();
@@ -58,6 +60,7 @@ public class BreaksFragment extends Fragment implements Saveable {
     }
 
     private void addListeners(){
+        // Нажал на плюсик
         binding.breaksPlusBtn.setOnClickListener(view -> {
             new ViewModelProvider(getActivity()).get(BreaksHolder.class).add(getInitialData());
         });

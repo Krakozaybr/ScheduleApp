@@ -44,6 +44,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonHold
         holder.lesson = lesson;
     }
 
+    // Вызываем у всех холдеров сохранение
     public void save(){
         for (LessonHolder holder : holders){
             holder.save();

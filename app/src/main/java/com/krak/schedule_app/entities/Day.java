@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// Таблица одного дня в расписании
 @Entity(tableName = "days")
 public class Day {
     @PrimaryKey

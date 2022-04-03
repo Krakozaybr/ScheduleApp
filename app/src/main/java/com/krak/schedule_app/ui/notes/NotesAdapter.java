@@ -84,15 +84,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
         }
 
         private void addListeners(){
+            // Нажал на карандаш
             this.edit.setOnClickListener(view -> {
                 Intent intent = new Intent(context, NoteActivity.class);
                 intent.putExtra(NoteActivity.PURPOSE, NoteActivity.EDIT_NOTE);
                 intent.putExtra(NoteActivity.NOTE_TO_EDIT, note.toJSON());
                 context.startActivity(intent);
             });
+            // Нажал на мусорку
             this.delete.setOnClickListener(view -> {
                 new ViewModelProvider(context).get(NotesHolder.class).delete(note);
             });
+            // Нажал на заголовок. Надо показать или скрыть текст с анимацией
             this.notesNoteTitleContainer.setOnClickListener(view -> {
                 if (isTextShowed){
                     text.animate()

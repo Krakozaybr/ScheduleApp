@@ -17,7 +17,7 @@ public class NotesHolder extends ListHolder<Note>{
         super(application);
     }
 
-    public void loadData(AtomicInteger threadsWorked){
+    public void loadData(){
         new Thread(){
             @Override
             public void run() {
@@ -26,7 +26,6 @@ public class NotesHolder extends ListHolder<Note>{
                 AppDatabase db = app.getDatabase();
                 NoteDao dao = db.notesDao();
                 data.postValue(dao.getAll());
-                threadsWorked.incrementAndGet();
             }
         }.start();
     }

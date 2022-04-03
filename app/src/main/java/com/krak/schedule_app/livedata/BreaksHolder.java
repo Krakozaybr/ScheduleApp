@@ -19,7 +19,7 @@ public class BreaksHolder extends ListHolder<BreaksSchedule> {
         super(application);
     }
 
-    public void loadData(AtomicInteger threadsWorked){
+    public void loadData(){
         new Thread(){
             @Override
             public void run() {
@@ -28,7 +28,6 @@ public class BreaksHolder extends ListHolder<BreaksSchedule> {
                 AppDatabase db = app.getDatabase();
                 BreaksDao dao = db.breaksDao();
                 data.postValue(dao.getBreaksSchedules());
-                threadsWorked.incrementAndGet();
             }
         }.start();
     }

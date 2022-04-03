@@ -32,10 +32,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Чтобы даже если пользователь ввел данные и сразу закрыл приложение,
+    // мы сохранили их. С заботой о UserExperience
     public static Saveable saveable;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    private AtomicInteger threadsWorked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +46,19 @@ public class MainActivity extends AppCompatActivity {
         initNav();
         addObservers();
         checkName();
-        threadsWorked = new AtomicInteger();
-        binding.getRoot().getViewTreeObserver().addOnPreDrawListener(() -> threadsWorked.get() == 3);
         loadData();
     }
 
     private void addObservers(){
+        // Если меняется имя, то мы меняем его в заголовке NavigationView
         NameHolder nameHolder = new ViewModelProvider(this).get(NameHolder.class);
-
         nameHolder.getData().observe(this, s -> {
             TextView name = binding.navView.getHeaderView(0).findViewById(R.id.navName);
             name.setText(s + ", ");
         });
     }
 
+    // Инициализируем NavigationView
     private void initNav(){
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    // Если имени нет в преференсах, то посылаем пользователя
+    // в StartActivity, где спрашиваем имя у него
     public void checkName(){
         SharedPreferences preferences = this.getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE);
         if (preferences.contains(Config.NAME_KEY)){
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Нужно для NavigationView
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -87,11 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
+    // Загружаем данные из бд в наши модели - ListHolder-ы
     private void loadData(){
         ViewModelProvider provider = new ViewModelProvider(this);
         ListHolder[] holders = {
@@ -102,11 +101,12 @@ public class MainActivity extends AppCompatActivity {
         for (ListHolder holder : holders){
             List list = (List)holder.getData().getValue();
             if (list == null || list.isEmpty()){
-                holder.loadData(threadsWorked);
+                holder.loadData();
             }
         }
     }
 
+    // Синхронизируем бд и ListHolder-ы на всякий случай.
     @Override
     protected void onPause() {
         super.onPause();

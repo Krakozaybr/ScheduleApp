@@ -10,6 +10,11 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Обеспечивает взаимодействие Activity с AppDatabase
+ * Модель.
+ */
+
 public abstract class ListHolder<V> extends AndroidViewModel {
 
     MutableLiveData<List<V>> data = new MutableLiveData<>();
@@ -26,7 +31,7 @@ public abstract class ListHolder<V> extends AndroidViewModel {
         data.setValue(newData);
     }
 
-    public abstract void loadData(AtomicInteger threadsWorked);
+    public abstract void loadData();
 
     public abstract void uploadData();
 }

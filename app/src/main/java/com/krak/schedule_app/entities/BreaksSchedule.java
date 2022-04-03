@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// Таблица расписания звонков
 @Entity(tableName = "breaks_schedule")
 public class BreaksSchedule {
 

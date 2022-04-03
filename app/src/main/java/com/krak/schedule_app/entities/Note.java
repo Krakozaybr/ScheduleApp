@@ -27,6 +27,7 @@ public class Note {
     public Note(@NonNull String title, String text) {
         this.title = title;
         this.text = text;
+        // Это PrimaryKey. Делается вручную, чтобы исключить дубликаты при многопоточном добавлении в бд
         this.key = String.format("{\"title\": \"%s\"; \"text\": \"%s\"}", title, text);
     }
 

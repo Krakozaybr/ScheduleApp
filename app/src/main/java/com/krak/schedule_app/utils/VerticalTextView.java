@@ -7,6 +7,7 @@ import android.view.Gravity;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
+// Уже не надо. Решил не париться, но пусть лежит тут
 public class VerticalTextView extends AppCompatTextView{
     final boolean topDown;
 

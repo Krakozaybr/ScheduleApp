@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+// Строка в одном дне
 @Entity(tableName = "lessons")
 public class Lesson {
     @NonNull
@@ -25,6 +25,7 @@ public class Lesson {
         this.dayNumber = dayNumber;
         this.number = number;
         this.text = text;
+        // Это PrimaryKey. Делается вручную, чтобы исключить дубликаты при многопоточном добавлении в бд
         this.position = dayNumber + "_" + number;
     }
 

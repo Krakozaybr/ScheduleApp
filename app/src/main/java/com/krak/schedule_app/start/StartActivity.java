@@ -26,8 +26,10 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void addListeners(){
+        // Нажал "Продолжить"
         binding.startNextBtn.setOnClickListener(view -> {
             String name = binding.startNameInput.getText().toString().trim();
+            // Проверяем имя на валидность
             if (NameValidator.isValidUserName(name)) {
                 startSchedule(name);
             } else {
@@ -35,6 +37,7 @@ public class StartActivity extends AppCompatActivity {
                         .show(getSupportFragmentManager(), "custom");
             }
         });
+        // Нажал "Пропустить"
         binding.mainSkipBtn.setOnClickListener(view -> {
             startSchedule(getResources().getString(R.string.standard_user_name));
         });

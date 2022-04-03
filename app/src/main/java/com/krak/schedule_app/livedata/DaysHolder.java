@@ -15,7 +15,7 @@ public class DaysHolder extends ListHolder<Day>{
         super(application);
     }
 
-    public void loadData(AtomicInteger threadsWorked){
+    public void loadData(){
         new Thread(){
             @Override
             public void run() {
@@ -24,7 +24,6 @@ public class DaysHolder extends ListHolder<Day>{
                 AppDatabase db = app.getDatabase();
                 ScheduleDao dao = db.scheduleDao();
                 data.postValue(dao.getDays());
-                threadsWorked.incrementAndGet();
             }
         }.start();
     }

@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import com.krak.schedule_app.databinding.SplashScreenActivityBinding;
 import com.krak.schedule_app.main_activity.MainActivity;
 
+// Просто заставка, чтобы провисало из-за создания бд не во время MainActivity
 public class SplashScreen extends AppCompatActivity {
 
     private MutableLiveData<Boolean> data = new MutableLiveData<>();

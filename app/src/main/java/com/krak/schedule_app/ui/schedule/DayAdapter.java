@@ -44,6 +44,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayHolder> {
         holders.add(holder);
     }
 
+    // Вызываем у всех холдеров сохранение
     public void save(){
         for (DayHolder holder : holders){
             holder.save();

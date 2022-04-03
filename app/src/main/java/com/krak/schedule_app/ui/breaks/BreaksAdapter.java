@@ -56,6 +56,7 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksSche
         holder.addEventListener();
     }
 
+    // Вызываем у всех холдеров сохранение
     public void save(){
         for (BreaksSchedulesHolder holder : holders){
             holder.save();
@@ -83,11 +84,14 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksSche
         }
 
         public void save(){
+            // Сохраняем все строки
             ((BreaksRowsAdapter)this.rows.getAdapter()).save();
+            // Сохраняем заголовок
             schedule.setTitle(title.getText().toString());
         }
 
         private void addEventListener(){
+            // Нажал на мусорку
             this.delete.setOnClickListener(view -> {
                 new ViewModelProvider(context).get(BreaksHolder.class).delete(schedule);
             });

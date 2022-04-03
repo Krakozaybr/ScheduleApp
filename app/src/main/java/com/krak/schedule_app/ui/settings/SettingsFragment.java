@@ -26,10 +26,12 @@ public class SettingsFragment extends Fragment {
     }
 
     private void addEventListeners(){
+        // Нажал на кнопку "Изменить имя"
         binding.changeNameBtn.setOnClickListener(view -> {
             new NameInputDialog(getResources().getString(R.string.change_name), getActivity())
                     .show(getActivity().getSupportFragmentManager(), "custom");
         });
+        // Нажал на кнопку "Связь с разработчиком"
         binding.feedbackBtn.setOnClickListener(view -> {
             new MessageDialog(getResources().getString(R.string.feedback), getString(R.string.credit))
                     .show(getActivity().getSupportFragmentManager(), "custom");

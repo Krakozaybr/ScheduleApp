@@ -31,20 +31,26 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void addEventListeners() {
+        // Нажал "Отмена"
         binding.cancelNoteBtn.setOnClickListener(view -> {
             startActivity(new Intent(NoteActivity.this, MainActivity.class));
         });
+        // Нажал "Сохранить"
         binding.saveNoteBtn.setOnClickListener(view -> {
             String purpose = getIntent().getStringExtra(PURPOSE);
             if (purpose.equals(EDIT_NOTE)){
+                // Передаем параметр, т.к. нужно удалить старую запись
                 save(Note.parse(getIntent().getStringExtra(NOTE_TO_EDIT)));
             } else {
+                // А вот тут ничего удалять не надо, т.к. мы создаем новую
                 save(null);
             }
             startActivity(new Intent(NoteActivity.this, MainActivity.class));
         });
     }
 
+    // Загружаем из Intent заметку для редактирования в поля ввода.
+    // Если её нет, то просто меняем заголовок на надпись "New Note"
     private void addContent(){
         String purpose = getIntent().getStringExtra(PURPOSE);
         switch (purpose){
@@ -61,6 +67,8 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
+    // Сохраняем заметку из полей ввода.
+    // Если deleted != null, то удаляем это из бд
     private void save(Note deleted){
         Note note = new Note(
                 binding.titleNoteInput.getText().toString(),

@@ -35,6 +35,7 @@ public class ScheduleFragment extends Fragment implements Saveable {
         return binding.getRoot();
     }
 
+    // Стандартный шаблон, если ничего нет
     private ArrayList<Day> getInitialData(){
         String[] dayNames = getResources().getStringArray(R.array.days_array);
         ArrayList<Day> result = new ArrayList<>();
@@ -50,11 +51,13 @@ public class ScheduleFragment extends Fragment implements Saveable {
         return result;
     }
 
+    // Грузим данные
     private void initDays(){
         LiveData<List<Day>> liveData = new ViewModelProvider(getActivity()).get(DaysHolder.class).getData();
         List<Day> dayList = liveData.getValue();
         DayAdapter adapter;
         if (dayList == null || dayList.size() == 0) {
+            // если в бд пусто, берем стандартный шаблон
             adapter = new DayAdapter(getContext(), getInitialData());
         } else {
             adapter = new DayAdapter(getContext(), dayList);
