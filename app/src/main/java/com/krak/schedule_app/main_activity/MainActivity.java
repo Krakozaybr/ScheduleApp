@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static Saveable saveable;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    public static final String GOTO_FRAGMENT = "GOTO_FRAGMENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
         addObservers();
         checkName();
         loadData();
+        checkIntents();
     }
+
+    private void checkIntents() {
+        if (getIntent().hasExtra(GOTO_FRAGMENT)){
+            binding.navView.setCheckedItem(getIntent().getIntExtra(GOTO_FRAGMENT, R.id.nav_schedule));
+        }
+    }
+
 
     private void addObservers(){
         // Если меняется имя, то мы меняем его в заголовке NavigationView

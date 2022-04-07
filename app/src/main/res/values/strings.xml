@@ -25,13 +25,11 @@
     <string name="credit">Разработка: Гриценко Ярослав\nДизайн: София Немцева\n\nyaroslaw.gritsencko@gmail.com\nnemtseva.sofa12@gmail.com</string>
     <string name="russian" translatable="false">Русский</string>
     <string name="english" translatable="false">English</string>
-    <string-array name="days_array">
-        <item>Понедельник</item>
-        <item>Вторник</item>
-        <item>Среда</item>
-        <item>Четверг</item>
-        <item>Пятница</item>
-        <item>Суббота</item>
-        <item>Воскресенье</item>
-    </string-array>
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
 </resources>

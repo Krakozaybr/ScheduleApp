@@ -1,5 +1,6 @@
 package com.krak.schedule_app.ui.schedule;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.krak.schedule_app.entities.Lesson;
 import com.krak.schedule_app.livedata.DaysHolder;
 import com.krak.schedule_app.main_activity.MainActivity;
 import com.krak.schedule_app.utils.Saveable;
+import com.krak.schedule_app.utils.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +34,28 @@ public class ScheduleFragment extends Fragment implements Saveable {
         binding = ScheduleFragmentBinding.inflate(getLayoutInflater());
         initDays();
         MainActivity.saveable = this;
+        addEventListeners();
         return binding.getRoot();
     }
 
+    private void addEventListeners() {
+        binding.clearAllScheduleBtn.setOnClickListener(view -> {
+            new ViewModelProvider(getActivity()).get(DaysHolder.class).updateData(getInitialData());
+        });
+    }
+
+
     // Стандартный шаблон, если ничего нет
     private ArrayList<Day> getInitialData(){
-        String[] dayNames = getResources().getStringArray(R.array.days_array);
+        String[] dayNames = {
+                getString(R.string.monday),
+                getString(R.string.tuesday),
+                getString(R.string.wednesday),
+                getString(R.string.thursday),
+                getString(R.string.friday),
+                getString(R.string.saturday),
+                getString(R.string.sunday)
+        };
         ArrayList<Day> result = new ArrayList<>();
         for (int j = 0; j < dayNames.length; j++){
             String dayName = dayNames[j];
@@ -58,14 +76,14 @@ public class ScheduleFragment extends Fragment implements Saveable {
         DayAdapter adapter;
         if (dayList == null || dayList.size() == 0) {
             // если в бд пусто, берем стандартный шаблон
-            adapter = new DayAdapter(getContext(), getInitialData());
+            adapter = new DayAdapter((MainActivity)getActivity(), getInitialData());
         } else {
-            adapter = new DayAdapter(getContext(), dayList);
+            adapter = new DayAdapter((MainActivity)getActivity(), dayList);
         }
         binding.days.setAdapter(adapter);
         liveData.observe(getActivity(), days -> {
             if (binding != null && binding.days != null) {
-                binding.days.setAdapter(new DayAdapter(getContext(), days));
+                binding.days.setAdapter(new DayAdapter((MainActivity)getActivity(), days));
             }
         });
     }

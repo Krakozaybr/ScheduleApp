@@ -6,7 +6,7 @@
     <EditText
         android:id="@+id/breaksCol1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/black_border"
         android:ems="10"
@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/breaksCol2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/black_border"
         android:ems="10"
@@ -36,7 +36,7 @@
     <EditText
         android:id="@+id/breaksCol3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/black_border"
         android:ems="10"

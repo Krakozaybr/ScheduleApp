@@ -33,7 +33,7 @@ public class NoteActivity extends AppCompatActivity {
     private void addEventListeners() {
         // Нажал "Отмена"
         binding.cancelNoteBtn.setOnClickListener(view -> {
-            startActivity(new Intent(NoteActivity.this, MainActivity.class));
+            goBack();
         });
         // Нажал "Сохранить"
         binding.saveNoteBtn.setOnClickListener(view -> {
@@ -45,8 +45,14 @@ public class NoteActivity extends AppCompatActivity {
                 // А вот тут ничего удалять не надо, т.к. мы создаем новую
                 save(null);
             }
-            startActivity(new Intent(NoteActivity.this, MainActivity.class));
+            goBack();
         });
+    }
+
+    private void goBack(){
+        Intent intent = new Intent(NoteActivity.this, MainActivity.class);
+        intent.putExtra(MainActivity.GOTO_FRAGMENT, R.id.nav_notes);
+        startActivity(intent);
     }
 
     // Загружаем из Intent заметку для редактирования в поля ввода.

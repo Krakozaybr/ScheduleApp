@@ -2,6 +2,7 @@ package com.krak.schedule_app.app;
 
 import android.app.Application;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.room.Room;
 
 import com.krak.schedule_app.app.database.AppDatabase;
@@ -16,6 +17,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         instance = this;
         database = Room.databaseBuilder(this, AppDatabase.class, Config.DB_NAME)
                 .build();

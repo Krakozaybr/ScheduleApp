@@ -51,6 +51,13 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonHold
         }
     }
 
+    // Очищаем все места ввода
+    public void clear(){
+        for (LessonHolder holder : holders){
+            holder.clear();
+        }
+    }
+
     @Override
     public int getItemCount() {
         return lessons.size();
@@ -66,6 +73,10 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonHold
             super(itemView);
             this.input = itemView.findViewById(R.id.lessonInput);
             this.number = itemView.findViewById(R.id.number);
+        }
+
+        public void clear(){
+            this.input.setText("");
         }
 
         public void save(){

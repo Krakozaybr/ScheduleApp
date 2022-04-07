@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 // Таблица одного дня в расписании
 @Entity(tableName = "days")
@@ -29,6 +30,14 @@ public class Day {
         this.dayNumber = dayNumber;
         this.name = name;
         this.lessons = lessons;
+    }
+
+    public void clear(){
+        int prevSize = lessons.size();
+        lessons = new ArrayList<>(lessons.size());
+        for (int i = 0; i < prevSize; i++) {
+            lessons.add(new Lesson(dayNumber, i + 1, ""));
+        }
     }
 
     private String toJSON(){

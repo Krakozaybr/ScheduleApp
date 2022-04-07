@@ -23,7 +23,14 @@ public class StartActivity extends AppCompatActivity {
         binding = StartActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         addListeners();
+        setInitialData();
     }
+
+    private void setInitialData() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        binding.startNameInput.setText(preferences.getString(Config.NAME_KEY, ""));
+    }
+
 
     private void addListeners(){
         // Нажал "Продолжить"

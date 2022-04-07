@@ -38,4 +38,16 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <ImageButton
+        android:id="@+id/clearAllScheduleBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/sheduleTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/light_brush" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
